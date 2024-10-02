@@ -8,6 +8,10 @@ public class GuessingGameApp {
 		System.out.println("Welcome to the Guess the Number Game");
 		System.out.println("====================================\n");
 		String choice = "y";
+		choiceLoop(choice);
+		System.out.println("BYE");
+}
+	private static void choiceLoop(String choice) {
 		while (choice.equalsIgnoreCase("y")) {
 		System.out.println("\nI'm thinking of a number from 1 to 100.\nTry to guess it.\n");
 		int secretNumber = (int)(Math.random()*100) + 1;
@@ -16,8 +20,7 @@ public class GuessingGameApp {
 		gameLoop(secretNumber, tryCounter);
 		choice = getString("Try again? (y/n): ", "y", "n");
 	}//this ends the game while loop
-		System.out.println("BYE");
-}
+	}
 	private static void gameLoop(int secretNumber, int tryCounter) {
 		boolean correct = false;
 		
