@@ -1,16 +1,23 @@
-package ui;
+package model;
 
 import java.util.Scanner;
 
-public class GuessingGameApp {
+public class Console {
+	
 	static Scanner sc = new Scanner (System.in);
-	public static void main(String[] args) {
+	
+	public static void wholeGameInOneMethod() {
+		Console.welcomeMessage();
+		Console.choiceLoop();
+		System.out.println("BYE");
+	}
+	public static void welcomeMessage() {
+		System.out.println("====================================\n");
 		System.out.println("Welcome to the Guess the Number Game");
 		System.out.println("====================================\n");
-		choiceLoop();
-		System.out.println("BYE");
-}
-	private static void choiceLoop() {
+	}
+	
+	public static void choiceLoop() {
 		String choice = "y";
 		while (choice.equalsIgnoreCase("y")) {
 		System.out.println("\nI'm thinking of a number from 1 to 100.\nTry to guess it.\n");
@@ -21,7 +28,7 @@ public class GuessingGameApp {
 		choice = getString("Try again? (y/n): ", "y", "n");
 	}//this ends the game while loop
 	}
-	private static void gameLoop(int secretNumber, int tryCounter) {
+	public static void gameLoop(int secretNumber, int tryCounter) {
 		boolean correct = false;
 		
 		while (!correct) {
@@ -49,14 +56,14 @@ public class GuessingGameApp {
 		
 		}//this ends the guessing while loop.
 	}
-	private static String getGuessResponse(int tryCounter) {
+	public static String getGuessResponse(int tryCounter) {
 		String guessResponse;
 		if (tryCounter <=3 ) {guessResponse = "Great work! You are a mathematical wizard\n";}
 		else if (tryCounter >3 && tryCounter <= 7) {guessResponse = "Not too bad! You've got some potential.\n";}
 		else {guessResponse = "What took you so long? Maybe you should take some lessons.\n";}
 		return guessResponse;
 	}
-	private static String getString(String prompt, String s1, String s2) 
+	public static String getString(String prompt, String s1, String s2) 
 	{
 		String str = "";
 		boolean success = false;
@@ -74,7 +81,7 @@ public class GuessingGameApp {
 		return str;
 	}
 	
-	private static int getInt(String prompt) 
+	public static int getInt(String prompt) 
 	{
 		boolean success = false;
 		int guess = 0;
@@ -95,5 +102,4 @@ public class GuessingGameApp {
 
 		return guess;
 	}
-	
-	}
+}
