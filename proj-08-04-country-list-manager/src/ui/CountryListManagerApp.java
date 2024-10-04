@@ -2,6 +2,7 @@ package ui;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import util.Console;
@@ -21,7 +22,7 @@ public class CountryListManagerApp {
 					Console.printLine("Country list is currently empty. Please add a country.\n");
 					break;
 				} else {
-					Console.printLine("");
+					Console.printLine("");//just wanted an extra line here.
 					for (String country : countryList) {
 						Console.printLine(country);
 					}
@@ -31,6 +32,7 @@ public class CountryListManagerApp {
 			case 2:
 				String c = Console.getRequiredString("\nEnter country: ");
 				countryList.add(c);
+				Collections.sort(countryList);
 				Console.printLine("The country, " + c + ", has been added.\n");
 
 				break;
