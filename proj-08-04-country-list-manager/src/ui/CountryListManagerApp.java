@@ -8,9 +8,9 @@ import java.util.List;
 import util.Console;
 
 public class CountryListManagerApp {
+	static List<String> countryList = new ArrayList<String>();
 
 	public static void main(String[] args) {
-		List<String> countryList = new ArrayList<String>();
 		String choice = "y";
 		Console.printLine("Country List Manager");
 		countryMenu();
@@ -18,23 +18,10 @@ public class CountryListManagerApp {
 			int menuChoice = Console.getInt("Enter Menu Number: ");
 			switch (menuChoice) {
 			case 1:
-				if (countryList.isEmpty()) {
-					Console.printLine("Country list is currently empty. Please add a country.\n");
-					break;
-				} else {
-					Console.printLine("");//just wanted an extra line here.
-					for (String country : countryList) {
-						Console.printLine(country);
-					}
-					Console.printLine("");
-				}
+				listCountries();
 				break;
 			case 2:
-				String c = Console.getRequiredString("\nEnter country: ");
-				countryList.add(c);
-				Collections.sort(countryList);
-				Console.printLine("The country, " + c + ", has been added.\n");
-
+				addACountry();
 				break;
 			case 3:
 				countryMenu();
@@ -50,6 +37,13 @@ public class CountryListManagerApp {
 		Console.printLine("Bye!");
 	}
 
+	private static void addACountry() {
+		String c = Console.getRequiredString("\nEnter country: ");
+		countryList.add(c);
+		Collections.sort(countryList);//sorts the list alphabetically
+		Console.printLine("The country, " + c + ", has been added.\n");
+	}
+
 	private static void countryMenu() {
 		Console.printLine("\nCommand Menu");
 		Console.printLine("1 - List Countries");
@@ -57,5 +51,17 @@ public class CountryListManagerApp {
 		Console.printLine("3 - View Menu");
 		Console.printLine("4 - Exit");
 	}
-
+	private static void listCountries() {
+		if (countryList.isEmpty()) {
+			Console.printLine("Country list is currently empty. Please add a country.\n");
+		} else {
+			Console.printLine("");//just wanted an extra line here.
+			Console.printLine("Countries List");
+			Console.printLine("==============");
+			for (String country : countryList) {
+				Console.printLine(country);
+			}
+			Console.printLine("");
+		}
+	}
 }
