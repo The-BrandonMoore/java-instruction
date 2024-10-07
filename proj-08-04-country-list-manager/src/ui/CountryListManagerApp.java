@@ -40,7 +40,7 @@ public class CountryListManagerApp {
 	private static void addACountry() {
 		String c = Console.getRequiredString("\nEnter country: ");
 		countryList.add(c);
-		Collections.sort(countryList);//sorts the list alphabetically
+		Collections.sort(countryList, String.CASE_INSENSITIVE_ORDER);//sorts the list alphabetically
 		Console.printLine("The country, " + c + ", has been added.\n");
 	}
 

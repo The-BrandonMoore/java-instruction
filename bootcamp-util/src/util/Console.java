@@ -1,5 +1,8 @@
 package util;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -129,5 +132,29 @@ public class Console {
 
 		return nbr;
 	}
+	public static Date getDate (String prompt) {
+		Date date = null;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		System.out.print(prompt);
+		String str = sc.nextLine().formatted(formatter);
+		LocalDate ld = LocalDate.parse(str);
+		date = Date.valueOf(ld);
+		return date;
+	}
 
+	public static Boolean getRequiredBoolean(String prompt) {
+		Boolean bool = null;
+		boolean success = false;
+		while (!success) {
+			System.out.print(prompt);
+			bool = Boolean.parseBoolean(sc.nextLine());
+			if (!bool.equals(null)) {
+				success = true;
+			} else {
+				System.out.println("Entry Required. Please Try Again.");
+			}
+		}
+		return bool;
+	}
+	
 }
